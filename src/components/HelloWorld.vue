@@ -1,22 +1,47 @@
 <template>
-  <div class="digify-wrap">
-    <div class="container">
-      <section class="formSection">
-        <h2>Compare Best Insurance Policies & Save Money</h2>
-        <div class="form">
-          <div class="form-nav">
-            <ui class="tabs" style="width:100%" v-for="tab in tabs" :key="tab">
-              <li class="tab">
-                <a class="tabSection">
-                  <img :title="tab.name" :alt="tab.name" :src="tab.icon" width="28px" height="29px" />
-                  {{tab.name}}
-                  <span>{{tab.suffix}}</span>
-                </a>
-              </li>
-            </ui>
+  <div>
+    <div class="digify-wrap">
+      <div class="container">
+        <section class="formSection">
+          <h2>Compare Best Insurance Policies & Save Money</h2>
+          <div class="form">
+            <div>
+              <b-tabs  v-for="tab in tabs" :key="tab">
+                <!-- Add your b-tab components here -->
+                <template v-slot:tabs-end>
+                  <b-nav-item role="presentation">
+                    <img
+                      :title="tab.name"
+                      :alt="tab.name"
+                      :src="tab.icon"
+                      width="28px"
+                      height="29px"
+                    />
+                    <li role="presentation" class="nav-item align-self-center">{{tab.name}}</li>
+                  </b-nav-item>
+                  <!-- <b-nav-item href="#" role="presentation" @click="() => {}">Another tab</b-nav-item> -->
+                  
+                </template>
+              </b-tabs>
+              <!-- <ui class="tabs" style="width:100%" v-for="tab in tabs" :key="tab">
+                <li class="tab">
+                  <a class="tabSection">
+                    <img
+                      :title="tab.name"
+                      :alt="tab.name"
+                      :src="tab.icon"
+                      width="28px"
+                      height="29px"
+                    />
+                    {{tab.name}}
+                    <span>{{tab.suffix}}</span>
+                  </a>
+                </li>
+              </ui> -->
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </div>
 </template>
@@ -33,50 +58,38 @@ export default {
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
-          name: "Term",
-          suffix: "Insurance"
+          name: "Term Insurance",
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
-          name: "Health",
-          suffix: "Insurance"
+          name: "Health Insurance",
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/investment-icon.jpg",
-          name: "Invesment",
-          suffix: "Plan"
+          name: "Invesment Plan",
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/cancer-icon.jpg",
-          name: "Cancer",
-          suffix: "Plan"
+          name: "Cancer Plan",
         },
         {
-          icon:
-            "https://www.comparepolicy.com/cp/new-design/images/child-icon.jpg",
-          name: "Child",
-          suffix: "Plan"
+          icon:"https://www.comparepolicy.com/cp/new-design/images/child-icon.jpg",
+          name: "Child Plan",
         },
         {
-          icon:
-            "https://www.comparepolicy.com/cp/new-design/images/retirement-icon.jpg",
-          name: "Retirement",
-          suffix: "Plan"
+          icon:"https://www.comparepolicy.com/cp/new-design/images/retirement-icon.jpg",
+          name: "Retirement Plan",
         },
         {
-          icon:
-            "https://www.comparepolicy.com/cp/new-design/images/car-icon.jpg",
-          name: "Car",
-          suffix: "Insurance"
+          icon:"https://www.comparepolicy.com/cp/new-design/images/car-icon.jpg",
+          name: "Car Insurance",
         },
         {
-          icon:
-            "https://www.comparepolicy.com/cp/new-design/images/bike-icon.jpg",
-          name: "Bike",
-          suffix: "Insurance"
+          icon:"https://www.comparepolicy.com/cp/new-design/images/bike-icon.jpg",
+          name: "Bike Insurance",
         }
       ]
     };
