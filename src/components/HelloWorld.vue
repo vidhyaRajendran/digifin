@@ -1,47 +1,67 @@
 <template>
-  <div>
-    <div class="digify-wrap">
-      <div class="container">
-        <section class="formSection">
-          <h2>Compare Best Insurance Policies & Save Money</h2>
-          <div class="form">
-            <div>
-              <b-tabs  v-for="tab in tabs" :key="tab">
-                <!-- Add your b-tab components here -->
-                <template v-slot:tabs-end>
-                  <b-nav-item role="presentation">
-                    <img
-                      :title="tab.name"
-                      :alt="tab.name"
-                      :src="tab.icon"
-                      width="28px"
-                      height="29px"
-                    />
-                    <li role="presentation" class="nav-item align-self-center">{{tab.name}}</li>
-                  </b-nav-item>
-                  <!-- <b-nav-item href="#" role="presentation" @click="() => {}">Another tab</b-nav-item> -->
-                  
-                </template>
-              </b-tabs>
-              <!-- <ui class="tabs" style="width:100%" v-for="tab in tabs" :key="tab">
-                <li class="tab">
-                  <a class="tabSection">
-                    <img
-                      :title="tab.name"
-                      :alt="tab.name"
-                      :src="tab.icon"
-                      width="28px"
-                      height="29px"
-                    />
-                    {{tab.name}}
-                    <span>{{tab.suffix}}</span>
-                  </a>
-                </li>
-              </ui> -->
-            </div>
-          </div>
-        </section>
-      </div>
+  <div class="digify-wrap">
+    <div>
+      <section class="formSection">
+        <h2 style="text-align:center">Compare Best Insurance Policies & Save Money</h2>
+        <v-card style="border-radius: 10px; height: 450px">
+          <v-tabs v-model="currentTabPath" slider-color="blue">
+            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">{{ item.name }}</v-tab>
+            <v-tabs-items v-model="currentTabPath" style="width: 100%;" touchless>
+              <v-tab-item lazy v-for="tab in tabs" :key="tab">
+                <div class="form">
+                  <h3
+                    v-if="tab.name === 'Health Insurance'"
+                    style="text-align:center; margin-top: 30px; margin-left:30px; margin-right:30px"
+                  >Get Tax Benefits on Health Insurance Plan up to Rs 55K under Section 80 D</h3>
+                  <template v-if="tab.name === 'Health Insurance'">
+                    <v-container fluid grid-list-md>
+                      <v-form ref="form" v-model="valid" lazy-validation>
+                        <v-row>
+                          <v-col class="d-flex" cols="12" sm="6">
+                            <v-select :items="city" label="Select City" dense required outlined></v-select>
+                          </v-col>
+
+                          <v-col class="d-flex" cols="12" sm="6">
+                            <v-select :items="age" label="Select Age" dense required outlined></v-select>
+                          </v-col>
+
+                          <v-col class="d-flex" cols="12" sm="6">
+                            <v-text-field v-model="name" label="Name" single-line required outlined></v-text-field>
+                          </v-col>
+
+                          <v-col class="d-flex" cols="12" sm="6">
+                            <v-text-field
+                              v-model="mobile"
+                              label="Mobile"
+                              single-line
+                              required
+                              outlined
+                            ></v-text-field>
+                          </v-col>
+
+                          <v-col class="d-flex">
+                            <v-btn
+                              style="margin-left: 218px;"
+                              class="text-capitalize btnStyle"
+                              color="primary"
+                              @click="getQuotes()"
+                            >Get Quotes</v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-form>
+                    </v-container>
+                  </template>
+                  <template v-else>
+                    <v-container>
+                      <span style="text-align: center">Not Found</span>
+                    </v-container>
+                  </template>
+                </div>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-tabs>
+        </v-card>
+      </section>
     </div>
   </div>
 </template>
@@ -49,55 +69,93 @@
 <script>
 export default {
   name: "HelloWorld",
-  props: {
-    msg: String
-  },
   data() {
     return {
+      currentTabPath: "Health Insurance",
+      city: [
+        "Agra",
+        "Ahmed",
+        "Alwar",
+        "Ambala",
+        "Amravati",
+        "Amristar",
+        "Anand",
+        "Ajmer",
+        "Bhopal",
+        "Bakaro",
+        "Baramati",
+        "Chennai",
+        "Coimbatore",
+        "Churu",
+        "Dhanbad",
+        "Durg",
+        "Dausa"
+      ],
+      name: "",
+      age: [
+        "18 Years",
+        "19 Years",
+        "20 Years",
+        "21 Years",
+        "22 Years",
+        "23 Years",
+        "24 Years",
+        "25 Years"
+      ],
+      mobile: "",
       tabs: [
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
-          name: "Term Insurance",
+          name: "Term Insurance"
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
-          name: "Health Insurance",
+          name: "Health Insurance"
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/investment-icon.jpg",
-          name: "Invesment Plan",
+          name: "Invesment Plan"
         },
         {
           icon:
             "https://www.comparepolicy.com/cp/new-design/images/cancer-icon.jpg",
-          name: "Cancer Plan",
+          name: "Cancer Plan"
         },
         {
-          icon:"https://www.comparepolicy.com/cp/new-design/images/child-icon.jpg",
-          name: "Child Plan",
+          icon:
+            "https://www.comparepolicy.com/cp/new-design/images/child-icon.jpg",
+          name: "Child Plan"
         },
         {
-          icon:"https://www.comparepolicy.com/cp/new-design/images/retirement-icon.jpg",
-          name: "Retirement Plan",
+          icon:
+            "https://www.comparepolicy.com/cp/new-design/images/retirement-icon.jpg",
+          name: "Retirement Plan"
         },
         {
-          icon:"https://www.comparepolicy.com/cp/new-design/images/car-icon.jpg",
-          name: "Car Insurance",
+          icon:
+            "https://www.comparepolicy.com/cp/new-design/images/car-icon.jpg",
+          name: "Car Insurance"
         },
         {
-          icon:"https://www.comparepolicy.com/cp/new-design/images/bike-icon.jpg",
-          name: "Bike Insurance",
+          icon:
+            "https://www.comparepolicy.com/cp/new-design/images/bike-icon.jpg",
+          name: "Bike Insurance"
         }
       ]
     };
+  },
+  methods: {
+    getQuotes() {
+      console.log(this.$router, "router name")
+      this.$router.push({ path: '/search/health' });
+    }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .digify-wrap {
   padding: 0;
@@ -116,34 +174,16 @@ export default {
   width: 870px;
   height: 630px;
   padding: 20px 50px 20px;
-  .form {
-    width: 100%;
-    height: 465px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 36, 105, 0.4);
-    margin-top: 35px;
-    border-radius: 5px;
-    /* overflow: hidden; */
-    padding-top: 1px;
-    background: #fff;
-  }
   .form-nav {
     width: 100%;
     margin: 25px 0 20px;
     height: 85px;
     border-bottom: solid 1px #ccc;
   }
-  .tabs {
-    .tab {
-      height: 84px;
-      letter-spacing: normal;
-      overflow: visible;
-      text-transform: none;
-    }
-    .tabSection {
-      margin-left: auto;
-      width: 90%;
-      margin-right: auto;
-    }
-  }
+}
+.form {
+  width: 590px;
+  height: 340px;
+  margin: 0 auto;
 }
 </style>

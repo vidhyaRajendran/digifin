@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Health from '../components/Health.vue'
 
 Vue.use(VueRouter)
 
@@ -9,6 +10,14 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/search/health',
+    name: 'Health',
+    component: Health,
+    meta: {
+      auth: true,
+    },
   },
   {
     path: '/about',

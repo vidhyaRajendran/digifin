@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
-    <!-- /container -->
-
-    <!-- 
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>-->
-    <router-view/>
-  </div>
+  <v-app>
+    <v-main>
+      <!-- <HelloWorld/> -->
+      <Health/>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-@import "./assets/scss/custom.scss";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
-@import "../node_modules/bootstrap-vue/src/index.scss";
-</style>
+<script>
+// import HelloWorld from './components/HelloWorld';
+import Health from './components/Health.vue'
+
+export default {
+  name: 'App',
+
+  components: {
+    // HelloWorld,
+    Health,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
