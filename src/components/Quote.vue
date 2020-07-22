@@ -8,7 +8,7 @@
               <v-checkbox
                 class="checkbox-lable"
                 style="margin-left:10px;font-size: 12px;font-weight: bold;"
-                @change="setData(list)"
+                @change="setData(model)"
                 v-model="list.checkboxValue"
                 :label="list.plan_name"
               ></v-checkbox>
