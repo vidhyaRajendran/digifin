@@ -4,7 +4,7 @@
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <v-container>
         <v-toolbar-title>
-          <img :src="digifin" alt="logo" />
+          <img @click="changePath()" :src="digifin" alt="logo" />
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -34,6 +34,11 @@ export default {
     return {
       digifin: image
     };
+  },
+  methods: {
+    changePath() {
+      this.$router.push({path: '/'})
+    }
   }
 };
 </script>
