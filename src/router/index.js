@@ -15,9 +15,6 @@ const routes = [
     path: '/search/health',
     name: 'Health',
     component: Health,
-    meta: {
-      auth: true,
-    },
   },
   {
     path: '/about',

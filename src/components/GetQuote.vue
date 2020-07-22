@@ -2,13 +2,23 @@
   <div class="digify-wrap">
     <div>
       <section class="formSection">
-        <h2 style="text-align:center">Compare Best Insurance Policies & Save Money</h2>
-        <v-card style="border-radius: 10px; height: 450px">
-          <v-tabs v-model="currentTabPath" slider-color="blue">
-            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">{{ item.name }}</v-tab>
-            <v-tabs-items v-model="currentTabPath" style="width: 100%;" touchless>
-              <v-tab-item lazy v-for="tab in tabs" :key="tab">
-                <div class="form">
+        <h2 class="text-center h2 mb-5">Compare Best Insurance Policies & Save Money</h2>
+        <v-card style="height: 400px">
+          <v-tabs fixed-tabs icons-and-text class v-model="currentTabPath">
+            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">
+              <div class="d-flex justify-content-center align-items-center flex-column py-3">
+                <div>
+                  <img :src="item.icon" width="20px" height="20px" alt="icon" />
+                </div>
+                <div>
+                  <span class="mt-3 text-wrap">{{ item.name }}</span>
+                </div>
+              </div>
+            </v-tab>
+            <v-divider></v-divider>
+            <v-tabs-items v-model="currentTabPath">
+              <v-tab-item lazy v-for="tab in tabs" :key="tab.name">
+                <div>
                   <h3
                     v-if="tab.name === 'Health Insurance'"
                     style="text-align:center; margin-top: 30px; margin-left:30px; margin-right:30px"
@@ -38,16 +48,16 @@
                               outlined
                             ></v-text-field>
                           </v-col>
-
-                          <v-col class="d-flex">
+                        </v-row>
+                        <div class="d-flex justify-center align-center">
+                          <div>
                             <v-btn
-                              style="margin-left: 218px;"
                               class="text-capitalize btnStyle"
                               color="primary"
                               @click="getQuotes()"
                             >Get Quotes</v-btn>
-                          </v-col>
-                        </v-row>
+                          </div>
+                        </div>
                       </v-form>
                     </v-container>
                   </template>
@@ -67,10 +77,13 @@
 </template>
 
 <script>
+import HealthImage from "../assets/img/health_insurance.png";
+
 export default {
-  name: "HelloWorld",
+  name: "GetQuote",
   data() {
     return {
+      healthImage: HealthImage,
       currentTabPath: "Health Insurance",
       city: [
         "Agra",
@@ -106,13 +119,13 @@ export default {
       tabs: [
         {
           icon:
-            "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
-          name: "Term Insurance"
+            "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
+          name: "Health Insurance"
         },
         {
           icon:
-            "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
-          name: "Health Insurance"
+            "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
+          name: "Term Insurance"
         },
         {
           icon:
@@ -149,41 +162,35 @@ export default {
   },
   methods: {
     getQuotes() {
-      console.log(this.$router, "router name")
-      this.$router.push({ path: '/search/health' });
+      console.log(this.$router, "router name");
+      this.$router.push({ path: "/search/health" });
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.digify-wrap {
-  padding: 0;
-  width: 100%;
-  height: 620px;
-  background: #fff;
-  background-position-x: right;
-  background-position-y: center;
-  border-bottom: dashed 1px #cccc;
+// .v-tabs-bar {
+//   height: 100px;
+// }
+.v-tab {
+  min-width: 95px;
+  max-width: 95px;
 }
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-}
-.formSection {
-  width: 870px;
-  height: 630px;
-  padding: 20px 50px 20px;
-  .form-nav {
-    width: 100%;
-    margin: 25px 0 20px;
-    height: 85px;
-    border-bottom: solid 1px #ccc;
-  }
-}
-.form {
-  width: 590px;
-  height: 340px;
-  margin: 0 auto;
-}
+// .digify-wrap {
+//   padding: 0;
+//   width: 100%;
+//   background: #fff;
+//   background-position-x: right;
+//   background-position-y: center;
+// }
+// .formSection {
+//   padding: 20px 50px 20px;
+//   .form-nav {
+//     width: 100%;
+//     margin: 25px 0 20px;
+//     height: 85px;
+//     border-bottom: solid 1px #ccc;
+//   }
+// }
 </style>
