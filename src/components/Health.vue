@@ -132,18 +132,18 @@
                               <v-text-field label="Eldest Member DOB" required></v-text-field>
                             </v-col>
                             <v-col cols="4" sm="6" md="4">
-                              <v-text-field
+                              <v-select
                                 label="Sum Insured"
                                 :items="['1 Lacs', '2 Lacs', '3 Lacs', '4 Lacs', '5 Lacs', '6 Lacs', '7 Lacs', '8 Lacs', '9 Lacs', '10 Lacs']"
                                 required
-                              ></v-text-field>
+                              ></v-select>
                             </v-col>
                             <v-col cols="4" sm="6" md="4">
-                              <v-text-field
+                              <v-select
                                 label="Tensure"
                                 :items="['1 Year', '2 Year', '3 Year']"
                                 required
-                              ></v-text-field>
+                              ></v-select>
                             </v-col>
                             <v-col cols="6">
                               <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
