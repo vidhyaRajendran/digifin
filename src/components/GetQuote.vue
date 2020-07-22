@@ -48,7 +48,6 @@
                               v-model="city"
                             ></v-select>
                           </v-col>
-
                           <v-col class="d-flex" cols="12" sm="6">
                             <v-select
                               v-model="age"
@@ -59,11 +58,9 @@
                               outlined
                             ></v-select>
                           </v-col>
-
                           <v-col class="d-flex" cols="12" sm="6">
                             <v-text-field v-model="name" label="Name" single-line required outlined></v-text-field>
                           </v-col>
-
                           <v-col class="d-flex" cols="12" sm="6">
                             <v-text-field
                               v-model="mobile"
@@ -185,12 +182,10 @@ export default {
   },
   methods: {
     getQuotes() {
-      console.log(this.city, this.age, this.name, this.mobile);
       if (!(this.city && this.age && this.name && this.mobile)) {
         this.showToast = true;
         return;
       }
-      console.log(this.$router, "router name");
       this.$router.push({ path: "/search/health" });
     }
   }
@@ -198,27 +193,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// .v-tabs-bar {
-//   height: 100px;
-// }
 .v-tab {
   min-width: 95px;
   max-width: 95px;
 }
-// .digify-wrap {
-//   padding: 0;
-//   width: 100%;
-//   background: #fff;
-//   background-position-x: right;
-//   background-position-y: center;
-// }
-// .formSection {
-//   padding: 20px 50px 20px;
-//   .form-nav {
-//     width: 100%;
-//     margin: 25px 0 20px;
-//     height: 85px;
-//     border-bottom: solid 1px #ccc;
-//   }
-// }
 </style>

@@ -9,10 +9,7 @@
               <v-list-item v-for="profile in my_profile" :key="profile.value">
                 <v-list-item-content>
                   <v-list-item-title v-text="profile.name"></v-list-item-title>
-
-                  <!-- <v-list-item-avatar>{{profile.value}}</v-list-item-avatar> -->
                 </v-list-item-content>
-
                 <v-list-item-icon class="text-right">{{profile.value}}</v-list-item-icon>
               </v-list-item>
             </v-list-item-group>
@@ -21,12 +18,6 @@
 
         <h4 class="my-3">Your Preferences</h4>
         <v-card>
-          <!-- <h5 style="margin-left:10px">Plan Benefits</h5> -->
-          <!-- <v-subheader>Plan Benefits</v-subheader> -->
-          <!-- <ui v-for="preference in preferences" :key="preference">
-            <div style="margin-left:10px">{{preference.name}}</div>
-          </ui>-->
-
           <v-list dense color="secondary" dark>
             <v-list-item-group>
               <v-list-item v-for="preference in preferences" :key="preference.name">
@@ -46,9 +37,6 @@
       </v-col>
     </v-row>
     <v-bottom-sheet hide-overlay v-if="selected.length > 1" v-model="sheet" persistent>
-      <!-- <template v-slot:activator="{ on, attrs }">
-        <v-btn color="green" dark v-bind="attrs" v-on="on">Open Persistent</v-btn>
-      </template>-->
       <v-sheet class="text-center" height="200px">
         <v-row>
           <v-col v-for="(item,index) in selected" :key="index">
@@ -282,12 +270,6 @@
               </tbody>
             </template>
           </v-simple-table>
-
-          <!-- <v-row v-for="(item, index) in selected" :key="index">
-          <v-col :md="4"></v-col>
-          <v-col cols="12">Top Benefits</v-col>
-          <v-col cols="4">{{plan_list[item].plan_name}}</v-col>
-          </v-row>-->
         </v-container>
       </v-card>
     </v-dialog>

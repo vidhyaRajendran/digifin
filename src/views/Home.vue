@@ -12,21 +12,17 @@
         </v-col>
       </v-row>
     </v-container>
-    <!-- <Health /> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import GetQuote from "@/components/GetQuote.vue";
 import HealthImage from "../assets/img/health_insurance.png";
-// import Health from "@/components/Health.vue";
 
 export default {
   name: "Home",
   components: {
     GetQuote
-    // Health
   },
   data() {
     return {

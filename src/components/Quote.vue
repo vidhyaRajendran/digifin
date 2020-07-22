@@ -109,24 +109,12 @@
                         <v-btn text color="primary" @click="$refs.menu.save(elderDOB)">OK</v-btn>
                       </v-date-picker>
                     </v-menu>
-
-                    <!-- <v-text-field label="Eldest Member DOB" required></v-text-field> -->
                   </v-col>
                   <v-col cols="4" sm="6" md="4">
-                    <v-select
-                      v-model="sum"
-                      label="Sum Insured"
-                      :items="['1 Lacs', '2 Lacs', '3 Lacs', '4 Lacs', '5 Lacs', '6 Lacs', '7 Lacs', '8 Lacs', '9 Lacs', '10 Lacs']"
-                      required
-                    ></v-select>
+                    <v-select v-model="sum" label="Sum Insured" :items="insuredOptions" required></v-select>
                   </v-col>
                   <v-col cols="4" sm="6" md="4">
-                    <v-select
-                      v-model="tensure"
-                      label="Tensure"
-                      :items="['1 Year', '2 Year', '3 Year']"
-                      required
-                    ></v-select>
+                    <v-select v-model="tensure" label="Tensure" :items="tensureOptions" required></v-select>
                   </v-col>
                   <v-col cols="6">
                     <v-btn
@@ -144,10 +132,6 @@
             </v-row>
           </v-container>
         </v-card-text>
-        <!-- <v-card-actions>
-          <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
-          <v-btn type="primary" @click="dialog = false">Edit Quotes</v-btn>
-        </v-card-actions>-->
       </v-card>
     </v-dialog>
   </div>
@@ -158,13 +142,6 @@ export default {
   props: ["list", "model"],
   computed: {
     checkValue() {
-      console.log(
-        this.elderDOB,
-        this.tensure,
-        this.sum,
-        this.children,
-        this.adults
-      );
       return !(
         this.elderDOB &&
         this.tensure &&
@@ -181,7 +158,20 @@ export default {
       tensure: "",
       sum: "",
       children: "",
-      adults: ""
+      adults: "",
+      insuredOptions: [
+        "1 Lacs",
+        "2 Lacs",
+        "3 Lacs",
+        "4 Lacs",
+        "5 Lacs",
+        "6 Lacs",
+        "7 Lacs",
+        "8 Lacs",
+        "9 Lacs",
+        "10 Lacs"
+      ],
+      tensureOptions: ["1 Year", "2 Year", "3 Year"]
     };
   },
   methods: {
@@ -215,8 +205,6 @@ export default {
 
 .benefitsList {
   list-style: lower-roman;
-  //   margin: 0;
-  //   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
