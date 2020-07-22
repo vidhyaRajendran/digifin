@@ -1,0 +1,28 @@
+{
+    "data":[
+       {
+          "name":"Adults",
+          "value":1
+       },
+       {
+          "name":"Children",
+          "value":0
+       },
+       {
+          "name":"Age",
+          "value":"25 Years"
+       },
+       {
+          "name":"Sum Insured",
+          "value":"5 lacs"
+       },
+       {
+          "name":"Gender",
+          "value":"Male"
+       },
+       {
+          "name":"city",
+          "value":"New Delhi"
+       }
+    ]
+ }

@@ -1,0 +1,154 @@
+{
+    "data": [
+        {
+            "plan_name": "Health Companion",
+            "checkboxValue": "false",
+            "plan_image": "1.png",
+            "score": 86.9,
+            "price": "7138",
+            "per_day_price": "19.56",
+            "benefits": [
+                {
+                    "name": "Room Rent"
+                },
+                {
+                    "name": "No Claim Bonus"
+                },
+                {
+                    "name": "Co Payment"
+                },
+                {
+                    "name": "SI Restoration"
+                }
+            ],
+            "top_benfifts": {
+                "sum_assured": "5 Lacs",
+                "premium": "7138",
+                "room_rent": "No sub limits except for suite or above room category",
+                "pre_existing_disease": "Covered (after 3 years of continuous coverage for SI 5 lacs and above, after 4 years of continuous coverage for SI upto 4 lacs). For Family First Plan, 3 years waiting period is applicable",
+                "waiting_period": "Any diseases contracted during the first 30 days of commencement of the policy are not covered except for accidental cases",
+                "co_pay_required": "Not Applicable",
+                "ncb": "Available up to 100% of SI",
+                "day_care_procedure": "All day care treatments covered",
+                "pre_hosiptial_cover": "30 days",
+                "post_hosiptial_cover": "60 days",
+                "daily_cash_benfit": "Available as an add-on benefit",
+                "home_hosipital": "Covered upto 100% of SI"
+            },
+            "other_benifts": {
+                "restore_benefit": true,
+                "pregancy_covered": false,
+                "health_checkup": true,
+                "critical_illness_benefit": false,
+                "regular_medical_expenses": false,
+                "ambulance_service_covered": true,
+                "lifelong_renewability": true,
+                "organ_donor_coverage": true,
+                "eye_cover": false,
+                "dental_cover": false,
+                "homeopathy": true,
+                "recovery_benefit": false
+            }
+        },
+        {
+            "plan_name": "Complete Health Care Insurance",
+            "checkboxValue": "false",
+            "plan_image": "2.png",
+            "score": 86.6,
+            "price": "6393",
+            "per_day_price": "17.52",
+            "benefits": [
+                {
+                    "name": "Room Rent"
+                },
+                {
+                    "name": "Co Payment"
+                },
+                {
+                    "name": "PED Waiting Period"
+                },
+                {
+                    "name": "SI Restoration"
+                }
+            ],
+            "top_benfifts": {
+                "sum_assured": "5 Lacs",
+                "premium": "6393",
+                "room_rent": "No sub limits on room rent",
+                "pre_existing_disease": "Covered (post 3 years of continued coverage)",
+                "waiting_period": "No medical treatments are covered within30 days from policy inception except for accidental emergencies",
+                "co_pay_required": "Not Applicable",
+                "ncb": "Available up to 50% of SI",
+                "day_care_procedure": "141 Day Care Procedures covered",
+                "pre_hosiptial_cover": "30 days",
+                "post_hosiptial_cover": "60 days",
+                "daily_cash_benfit": "Available as an add-on benefit",
+                "home_hosipital": "Covered upto 20% of SI"
+            },
+            "other_benifts": {
+                "restore_benefit": true,
+                "pregancy_covered": true,
+                "health_checkup": true,
+                "critical_illness_benefit": true,
+                "regular_medical_expenses": true,
+                "ambulance_service_covered": true,
+                "lifelong_renewability": true,
+                "organ_donor_coverage": true,
+                "eye_cover": true,
+                "dental_cover": true,
+                "homeopathy": true,
+                "recovery_benefit": true
+            }
+        },
+        {
+            "plan_name": "Care Plus No Claim Bonus Super",
+            "checkboxValue": "false",
+            "plan_image": "3.png",
+            "score": 82.5,
+            "price": "7283",
+            "per_day_price": "19.95",
+            "benefits": [
+                {
+                    "name": "Room Rent"
+                },
+                {
+                    "name": "Co Payment"
+                },
+                {
+                    "name": "PED Waiting Period"
+                },
+                {
+                    "name": "No Claim Bonus"
+                }
+            ],
+            "top_benfifts": {
+                "sum_assured": "5 Lacs",
+                "premium": "7283",
+                "room_rent": "Single Private Room",
+                "pre_existing_disease": "Covered (post 4 years of continued coverage)",
+                "waiting_period": "Any diseases contracted during first 30 days of the policy start date except those arising out of accidents",
+                "co_pay_required": "20% of the Claim Amount (if insured is more than  61 years of age)",
+                "ncb": "Available up to 150% of SI",
+                "day_care_procedure": ">500 Day Care Procedures covered",
+                "pre_hosiptial_cover": "30 days",
+                "post_hosiptial_cover": "60 days",
+                "daily_cash_benfit": "Rs 500 per day upto 5 days for SI upto 4 L",
+                "home_hosipital": "Covered upto 10% of SI"
+            },
+            "other_benifts": {
+                "restore_benefit": true,
+                "pregancy_covered": true,
+                "health_checkup": true,
+                "critical_illness_benefit": false,
+                "regular_medical_expenses": false,
+                "ambulance_service_covered": true,
+                "lifelong_renewability": true,
+                "organ_donor_coverage": true,
+                "eye_cover": false,
+                "dental_cover": false,
+                "homeopathy": true,
+                "recovery_benefit": false
+            }
+        }
+    ]
+}

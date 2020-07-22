@@ -1,0 +1,31 @@
+{
+    "data":[
+       {
+          "name":"Room Rent"
+       },
+       {
+          "name":"No Claim Bonus"
+       },
+       {
+          "name":"Co Payment"
+       },
+       {
+          "name":"S I Restoration"
+       },
+       {
+          "name":"PED Waiting Period"
+       },
+       {
+          "name":"Day Care Procedures"
+       },
+       {
+          "name":"Health Check Up"
+       },
+       {
+          "name":"Wellness"
+       },
+       {
+          "name":"AYUSH"
+       }
+    ]
+ }
