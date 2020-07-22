@@ -60,23 +60,6 @@
                       <span class="hq-policy">Plan Detail</span>
                     </v-col>
                   </v-row>
-                  <!-- <v-card>
-                      <v-card-title class="subheading font-weight-bold">Top 4 Benefits</v-card-title>
-
-                      <v-divider></v-divider>
-
-                      <v-list dense>
-                        <v-list-item>
-                          <v-list-item-content>1. Room Rent</v-list-item-content>
-                          <v-list-item-content class="align-end">2. No Claim Bonus</v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item>
-                          <v-list-item-content>3. Co payment</v-list-item-content>
-                          <v-list-item-content class="align-end">4. PEO Waiting Period</v-list-item-content>
-                        </v-list-item>
-                      </v-list>
-                  </v-card>-->
                 </v-col>
                 <v-col cols="2" class="score-policy">Score - {{list.score}}/100</v-col>
                 <v-col cols="6">
