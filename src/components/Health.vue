@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-layout row wrap class="mt-5">
-      <v-flex xs2>
+    <v-row class="mt-5">
+      <v-col :md="2">
         <h4>Your Profile</h4>
         <v-card style="margin-top:10px">
           <v-list dense>
@@ -37,13 +37,18 @@
             </v-list-item-group>
           </v-list>
         </v-card>
-      </v-flex>
-      <v-flex xs10>
+      </v-col>
+
+      <v-col>
+        <div v-for="list in plan_list" :key="list.plan_name">
+          <Quote :list="list" />
+        </div>
+
         <v-row>
-          <v-col v-for="list in plan_list" :key="list" cols="12">
-            <v-card style="margin-left: 30px; height: 150px">
+          <!-- <v-col v-for="list in plan_list" :key="list" cols="12">
+            <v-card>
               <v-row>
-                <v-col cols="2" style="border-right: 1px solid lightgrey;margin-bottom: -100px;">
+                <v-col cols="2" style="border-right: 1px solid lightgrey">
                   <v-row>
                     <v-col cols="12" style="padding: 0px 10px">
                       <v-checkbox
@@ -60,23 +65,7 @@
                       <span class="hq-policy">Plan Detail</span>
                     </v-col>
                   </v-row>
-                  <!-- <v-card>
-                      <v-card-title class="subheading font-weight-bold">Top 4 Benefits</v-card-title>
-
-                      <v-divider></v-divider>
-
-                      <v-list dense>
-                        <v-list-item>
-                          <v-list-item-content>1. Room Rent</v-list-item-content>
-                          <v-list-item-content class="align-end">2. No Claim Bonus</v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item>
-                          <v-list-item-content>3. Co payment</v-list-item-content>
-                          <v-list-item-content class="align-end">4. PEO Waiting Period</v-list-item-content>
-                        </v-list-item>
-                      </v-list>
-                  </v-card>-->
+               
                 </v-col>
                 <v-col cols="2" class="score-policy">Score - {{list.score}}/100</v-col>
                 <v-col cols="6">
@@ -105,10 +94,10 @@
                 </v-col>
               </v-row>
             </v-card>
-          </v-col>
+          </v-col>-->
         </v-row>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -116,8 +105,12 @@
 import profile from "../data/profile";
 import preferences from "../data/preferences";
 import plan_list from "../data/plan_list";
+import Quote from "./Quote";
 export default {
   name: "Health",
+  components: {
+    Quote
+  },
   data() {
     return {
       my_profile: profile.data,
@@ -139,7 +132,7 @@ export default {
   font-style: normal;
   font-weight: 600;
 }
-.score-policy{
+.score-policy {
   font-size: 12px;
   color: #f98027;
   text-decoration: underline;
@@ -196,7 +189,7 @@ export default {
   padding: 0;
 }
 
-.cardValues{
+.cardValues {
   position: relative;
   top: -12px;
   border-top: none;
