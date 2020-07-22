@@ -3,7 +3,7 @@
     <v-toolbar dark>
       <v-container>
         <v-toolbar-title>
-          <img @click="changePath()" :src="digifin" alt="logo" />
+          <img @click="changePath()" class="cursor" :src="digifin" alt="logo" />
         </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-container>
@@ -23,8 +23,14 @@ export default {
   },
   methods: {
     changePath() {
-      this.$router.push({path: '/'})
+      this.$router.push({ path: "/" });
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.cursor {
+  cursor: pointer;
+}
+</style>
