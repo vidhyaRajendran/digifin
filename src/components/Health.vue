@@ -1,7 +1,8 @@
 <template>
   <v-container>
-    <v-layout row wrap class="mt-5">
-      <v-flex xs2>
+    {{ listData }}
+    <v-row class="mt-5">
+      <v-col :md="2">
         <h4>Your Profile</h4>
         <v-card style="margin-top:10px">
           <v-list dense>
@@ -37,13 +38,18 @@
             </v-list-item-group>
           </v-list>
         </v-card>
-      </v-flex>
-      <v-flex xs10>
+      </v-col>
+
+      <v-col>
+        <div v-for="(list, index) in plan_list" :key="index">
+          <Quote :list="list" :model="index" @list="setData($event)"/>
+        </div>
+
         <v-row>
-          <v-col v-for="list in plan_list" :key="list" cols="12">
-            <v-card style="margin-left: 30px; height: 150px">
+          <!-- <v-col v-for="list in plan_list" :key="list" cols="12">
+            <v-card>
               <v-row>
-                <v-col cols="2" style="border-right: 1px solid lightgrey;margin-bottom: -100px;">
+                <v-col cols="2" style="border-right: 1px solid lightgrey">
                   <v-row>
                     <v-col cols="12" style="padding: 0px 10px">
                       <v-checkbox
@@ -60,6 +66,7 @@
                       <span class="hq-policy">Plan Detail</span>
                     </v-col>
                   </v-row>
+               
                 </v-col>
                 <v-col cols="2" class="score-policy">Score - {{list.score}}/100</v-col>
                 <v-col cols="6">
@@ -140,17 +147,55 @@
                       </v-row>
                     </v-container>
                   </v-card-text>
-                  <!-- <v-card-actions>
+                  <v-card-actions>
                     <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
                     <v-btn type="primary" @click="dialog = false">Edit Quotes</v-btn>
-                  </v-card-actions>-->
+                  </v-card-actions>
                 </v-card>
               </v-dialog>
             </v-card>
-          </v-col>
+          </v-col>-->
         </v-row>
-      </v-flex>
-    </v-layout>
+      </v-col>
+    </v-row>
+
+     <v-bottom-sheet v-if="listData.checkboxValue"
+      v-model="listData.checkboxValue" :persistent=true>
+     <v-btn
+          class="mt-6"
+          text
+          color="red"
+          @click="dialogShow = true"
+        >Compare</v-btn>
+        <v-btn
+          class="mt-6"
+          text
+          color="red"
+          @click="listData.checkboxValue= !listData.checkboxValue"
+        >cancel</v-btn>
+     </v-bottom-sheet>
+    <v-dialog v-model="dialogShow">
+      <v-card>
+      <v-row>
+        <v-col cols="4">
+          <v-btn @click="dialogShow = false"> Go Back
+          </v-btn>
+        </v-col>
+        <v-col cols="4">
+          <img width="100px" :src="listData.plan_image"/>
+          {{listData.plan_name}}
+        </v-col>
+         <v-col cols="4">
+        </v-col>
+      </v-row>
+      <v-row v-for="(list, index) in listData" :key="index">
+        <v-col cols="12">
+          Top Benefits
+        </v-col>
+        <v-col cols="4">{{list.top_benifits}}</v-col>
+      </v-row>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -158,10 +203,16 @@
 import profile from "../data/profile";
 import preferences from "../data/preferences";
 import plan_list from "../data/plan_list";
+import Quote from "./Quote";
 export default {
   name: "Health",
+  components: {
+    Quote
+  },
   data() {
     return {
+      listData: [],
+      dialogShow: false,
       dialogVisible: "false",
       my_profile: profile.data,
       preferences: preferences.data,
@@ -169,7 +220,9 @@ export default {
     };
   },
   methods: {
-    buyQuote() {}
+    setData(val) {
+        this.listData.push(val);
+    }
   }
 };
 </script>
