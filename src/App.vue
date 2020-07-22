@@ -24,3 +24,9 @@ export default {
   })
 };
 </script>
+
+<style lang="scss">
+.toasted.bubble {
+  line-height: 4em;
+}
+</style>
