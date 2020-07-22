@@ -8,8 +8,8 @@
               <v-checkbox
                 class="checkbox-lable"
                 style="margin-left:10px;font-size: 12px;font-weight: bold;"
-                @change="setData(model)"
-                v-model="list.checkboxValue"
+                @change="setData()"
+                v-model="list.checked"
                 :label="list.plan_name"
               ></v-checkbox>
             </v-col>
@@ -195,9 +195,9 @@ export default {
       });
       this.toggleDialog();
     },
-     setData(val) {
-      this.$emit('list', val)
-     },
+    setData(val) {
+      this.$emit("setCompare", val);
+    },
     toggleDialog() {
       this.dialogVisible = !this.dialogVisible;
     }

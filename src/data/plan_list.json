@@ -2,7 +2,6 @@
     "data": [
         {
             "plan_name": "Health Companion",
-            "checkboxValue": "false",
             "plan_image": "https://www.comparepolicy.com/properties/company/20190531_171103_YHgCR_max-bupa.jpg",
             "score": 86.9,
             "price": "7138",
@@ -21,7 +20,7 @@
                     "name": "SI Restoration"
                 }
             ],
-            "top_benfifts": {
+            "top_benifits": {
                 "sum_assured": "5 Lacs",
                 "premium": "7138",
                 "room_rent": "No sub limits except for suite or above room category",
@@ -36,23 +35,22 @@
                 "home_hosipital": "Covered upto 100% of SI"
             },
             "other_benifts": {
-                "restore_benefit": true,
-                "pregancy_covered": false,
-                "health_checkup": true,
-                "critical_illness_benefit": false,
-                "regular_medical_expenses": false,
-                "ambulance_service_covered": true,
-                "lifelong_renewability": true,
-                "organ_donor_coverage": true,
-                "eye_cover": false,
-                "dental_cover": false,
-                "homeopathy": true,
-                "recovery_benefit": false
+                "restore_benefit": "Yes",
+                "pregancy_covered": "No",
+                "health_checkup": "Yes",
+                "critical_illness_benefit": "No",
+                "regular_medical_expenses": "No",
+                "ambulance_service_covered": "Yes",
+                "lifelong_renewability": "Yes",
+                "organ_donor_coverage": "Yes",
+                "eye_cover": "No",
+                "dental_cover": "No",
+                "homeopathy": "Yes",
+                "recovery_benefit": "No"
             }
         },
         {
             "plan_name": "Complete Health Care Insurance",
-            "checkboxValue": "false",
             "plan_image": "https://www.comparepolicy.com/properties/company/20150831_072642_UXQVL_Universal-Sompo-General.jpg",
             "score": 86.6,
             "price": "6393",
@@ -71,7 +69,7 @@
                     "name": "SI Restoration"
                 }
             ],
-            "top_benfifts": {
+            "top_benifits": {
                 "sum_assured": "5 Lacs",
                 "premium": "6393",
                 "room_rent": "No sub limits on room rent",
@@ -86,23 +84,22 @@
                 "home_hosipital": "Covered upto 20% of SI"
             },
             "other_benifts": {
-                "restore_benefit": true,
-                "pregancy_covered": true,
-                "health_checkup": true,
-                "critical_illness_benefit": true,
-                "regular_medical_expenses": true,
-                "ambulance_service_covered": true,
-                "lifelong_renewability": true,
-                "organ_donor_coverage": true,
-                "eye_cover": true,
-                "dental_cover": true,
-                "homeopathy": true,
-                "recovery_benefit": true
+                "restore_benefit": "Yes",
+                "pregancy_covered": "Yes",
+                "health_checkup": "Yes",
+                "critical_illness_benefit": "Yes",
+                "regular_medical_expenses": "Yes",
+                "ambulance_service_covered": "Yes",
+                "lifelong_renewability": "Yes",
+                "organ_donor_coverage": "Yes",
+                "eye_cover": "Yes",
+                "dental_cover": "Yes",
+                "homeopathy": "Yes",
+                "recovery_benefit": "Yes"
             }
         },
         {
             "plan_name": "Care Plus No Claim Bonus Super",
-            "checkboxValue": "false",
             "plan_image": "https://www.comparepolicy.com/properties/company/20150831_073335_yluv3_Religare-Health-Insurance.jpg",
             "score": 82.5,
             "price": "7283",
@@ -136,18 +133,18 @@
                 "home_hosipital": "Covered upto 10% of SI"
             },
             "other_benifts": {
-                "restore_benefit": true,
-                "pregancy_covered": true,
-                "health_checkup": true,
-                "critical_illness_benefit": false,
-                "regular_medical_expenses": false,
-                "ambulance_service_covered": true,
-                "lifelong_renewability": true,
-                "organ_donor_coverage": true,
-                "eye_cover": false,
-                "dental_cover": false,
-                "homeopathy": true,
-                "recovery_benefit": false
+                "restore_benefit": "Yes",
+                "pregancy_covered": "Yes",
+                "health_checkup": "Yes",
+                "critical_illness_benefit": "No",
+                "regular_medical_expenses": "No",
+                "ambulance_service_covered": "Yes",
+                "lifelong_renewability": "Yes",
+                "organ_donor_coverage": "Yes",
+                "eye_cover": "No",
+                "dental_cover": "No",
+                "homeopathy": "Yes",
+                "recovery_benefit": "No"
             }
         }
     ]

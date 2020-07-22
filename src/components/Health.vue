@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    {{ listData }}
     <v-row class="mt-5">
       <v-col :md="2">
         <h4>Your Profile</h4>
@@ -42,46 +41,254 @@
 
       <v-col>
         <div v-for="(list, index) in plan_list" :key="index">
-          <Quote :list="list" :model="index" @list="setData($event)"/>
+          <Quote :list="list" @setCompare="setCompare(index)" />
         </div>
       </v-col>
     </v-row>
+    <v-bottom-sheet hide-overlay v-if="selected.length > 1" v-model="sheet" persistent>
+      <!-- <template v-slot:activator="{ on, attrs }">
+        <v-btn color="green" dark v-bind="attrs" v-on="on">Open Persistent</v-btn>
+      </template>-->
+      <v-sheet class="text-center" height="200px">
+        <v-row>
+          <v-col v-for="(item,index) in selected" :key="index">
+            <v-card class="pa-5">
+              <div>
+                <img height="100px" :src="plan_list[item].plan_image" alt="plan_image" />
+              </div>
+              {{plan_list[item].plan_name}}
+            </v-card>
+          </v-col>
+          <v-col :md="3">
+            <div>
+              <v-btn class="mt-6" text color="red" @click="dialogShow = true">Compare</v-btn>
+              <v-btn class="mt-6" text color="error" @click="closeCompare">close</v-btn>
+            </div>
+          </v-col>
+        </v-row>
+      </v-sheet>
+    </v-bottom-sheet>
 
-     <v-bottom-sheet v-if="listData.checkboxValue"
-      v-model="listData.checkboxValue" :persistent=true>
-     <v-btn
-          class="mt-6"
-          text
-          color="red"
-          @click="dialogShow = true"
-        >Compare</v-btn>
-        <v-btn
-          class="mt-6"
-          text
-          color="red"
-          @click="listData.checkboxValue= !listData.checkboxValue"
-        >cancel</v-btn>
-     </v-bottom-sheet>
     <v-dialog v-model="dialogShow">
       <v-card>
-      <v-row>
-        <v-col cols="4">
-          <v-btn @click="dialogShow = false"> Go Back
-          </v-btn>
-        </v-col>
-        <v-col cols="4">
-          <img width="100px" :src="listData.plan_image"/>
-          {{listData.plan_name}}
-        </v-col>
-         <v-col cols="4">
-        </v-col>
-      </v-row>
-      <v-row v-for="(list, index) in listData" :key="index">
-        <v-col cols="12">
-          Top Benefits
-        </v-col>
-        <v-col cols="4">{{list.top_benifits}}</v-col>
-      </v-row>
+        <v-container>
+          <v-row>
+            <v-col :md="selected.length > 2 ? 1 : 2">
+              <v-btn @click="dialogShow = false;closeCompare()">Go Back</v-btn>
+            </v-col>
+            <v-col :md="selected.length > 2 ? 3 : 4" v-for="(item, index) in selected" :key="index">
+              <div class="d-flex justify-center align-center flex-column">
+                <div>
+                  <img height="100px" :src="plan_list[item].plan_image" alt="plan_image" />
+                </div>
+                {{plan_list[item].plan_name}}
+                <v-btn color="primary" class="mt-2" x-large>₹ {{plan_list[item].price}}</v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-simple-table>
+            <template v-slot:default>
+              <tbody>
+                <tr>
+                  <th
+                    class="text-center"
+                    style="background : lightgrey"
+                    :colspan="selected.length + 1"
+                  >
+                    <h2 class="ma-0">Top Features</h2>
+                  </th>
+                </tr>
+                <tr>
+                  <td>Sum Assured</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.sum_assured}}</td>
+                </tr>
+                <tr>
+                  <td>Premium</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.premium}}</td>
+                </tr>
+                <tr>
+                  <td>Room Rent</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.room_rent}}</td>
+                </tr>
+                <tr>
+                  <td>Pre-existing diseases</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.pre_existing_disease}}</td>
+                </tr>
+                <tr>
+                  <td>Waiting Period</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.waiting_period}}</td>
+                </tr>
+                <tr>
+                  <td>Co-pay required</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.co_pay_required}}</td>
+                </tr>
+                <tr>
+                  <td>NCB (additional cover in case of no claim)</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.ncb}}</td>
+                </tr>
+
+                <tr>
+                  <td>Day care procedures covered</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.day_care_procedure}}</td>
+                </tr>
+                <tr>
+                  <td>Pre-hospitalization coverage</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.pre_hosiptial_cover}}</td>
+                </tr>
+                <tr>
+                  <td>Post-hospitalization coverage</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.post_hosiptial_cover}}</td>
+                </tr>
+                <tr>
+                  <td>Daily cash benefit covered upto</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.daily_cash_benfit}}</td>
+                </tr>
+                <tr>
+                  <td>Home/Domicilary hospitalization</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].top_benifits.home_hosipital}}</td>
+                </tr>
+                <tr>
+                  <th
+                    class="text-center"
+                    style="background : lightgrey"
+                    :colspan="selected.length + 1"
+                  >
+                    <h2 class="ma-0 text">Other Benefits</h2>
+                  </th>
+                </tr>
+
+                <tr>
+                  <td>Restore benefit</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.restore_benefit}}</td>
+                </tr>
+                <tr>
+                  <td>Maternity/Pregnancy covered</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.pregancy_covered}}</td>
+                </tr>
+                <tr>
+                  <td>Health Checkup</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.health_checkup}}</td>
+                </tr>
+                <tr>
+                  <td>Critical Illness Benefit</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.critical_illness_benefit}}</td>
+                </tr>
+                <tr>
+                  <td>Regular medical expenses (OPD) coverage</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.regular_medical_expenses}}</td>
+                </tr>
+                <tr>
+                  <td>Ambulance services covered</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.ambulance_service_covered}}</td>
+                </tr>
+                <tr>
+                  <td>Lifelong renewability</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.lifelong_renewability}}</td>
+                </tr>
+
+                <tr>
+                  <td>Organ donor coverage</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.organ_donor_coverage}}</td>
+                </tr>
+                <tr>
+                  <td>Eye cover</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.eye_cover}}</td>
+                </tr>
+                <tr>
+                  <td>Dental cover</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.dental_cover}}</td>
+                </tr>
+                <tr>
+                  <td>Ayurveda / Homeopathy</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.homeopathy}}</td>
+                </tr>
+                <tr>
+                  <td>Recovery (Convalescence) benefit</td>
+                  <td
+                    v-for="(item, index) in selected"
+                    :key="index"
+                  >{{plan_list[item].other_benifts.recovery_benefit}}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+
+          <!-- <v-row v-for="(item, index) in selected" :key="index">
+          <v-col :md="4"></v-col>
+          <v-col cols="12">Top Benefits</v-col>
+          <v-col cols="4">{{plan_list[item].plan_name}}</v-col>
+          </v-row>-->
+        </v-container>
       </v-card>
     </v-dialog>
   </v-container>
@@ -99,17 +306,31 @@ export default {
   },
   data() {
     return {
+      sheet: true,
       listData: [],
       dialogShow: false,
       dialogVisible: "false",
       my_profile: profile.data,
       preferences: preferences.data,
-      plan_list: plan_list.data
+      plan_list: plan_list.data.map(d => ({ ...d, checked: false })),
+      selected: []
     };
   },
   methods: {
-    setData(val) {
-        this.listData.push(val);
+    setCompare(i) {
+      if (this.selected.indexOf(i) > -1) {
+        this.selected = this.selected.filter(v => v !== i);
+      } else {
+        this.selected.push(i);
+        if (this.selected.length > 1) {
+          this.sheet = true;
+        }
+      }
+    },
+    closeCompare() {
+      this.sheet = !this.sheet;
+      this.selected = [];
+      this.plan_list = this.plan_list.map(d => ({ ...d, checked: false }));
     }
   }
 };
