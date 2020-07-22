@@ -2,15 +2,18 @@
   <v-app>
     <v-main>
       <Navbar />
+      <div class="digify-wrap">
+        <router-view />
+      </div>
       <!-- <HelloWorld/> -->
-      <Health />
+      <!-- <Health /> -->
     </v-main>
   </v-app>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld';
-import Health from "./components/Health.vue";
+// import Health from "./components/Health.vue";
 import Navbar from "./components/Navbar";
 
 export default {
@@ -18,7 +21,7 @@ export default {
 
   components: {
     // HelloWorld,
-    Health,
+    // Health,
     Navbar
   },
 

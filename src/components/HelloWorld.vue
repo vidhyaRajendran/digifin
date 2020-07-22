@@ -4,11 +4,20 @@
       <section class="formSection">
         <h2 style="text-align:center">Compare Best Insurance Policies & Save Money</h2>
         <v-card style="border-radius: 10px; height: 450px">
-          <v-tabs v-model="currentTabPath" slider-color="blue">
-            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">{{ item.name }}</v-tab>
-            <v-tabs-items v-model="currentTabPath" style="width: 100%;" touchless>
-              <v-tab-item lazy v-for="tab in tabs" :key="tab">
-                <div class="form">
+          <v-tabs class="py-3" v-model="currentTabPath">
+            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">
+              <div class="d-flex justify-content-center align-items-center flex-column py-3">
+                <div>
+                  <img :src="item.icon" width="20px" height="20px" alt="icon" />
+                </div>
+                <div>
+                  <span class="mt-3 text-wrap">{{ item.name }}</span>
+                </div>
+              </div>
+            </v-tab>
+            <v-tabs-items v-model="currentTabPath">
+              <v-tab-item lazy v-for="tab in tabs" :key="tab.name">
+                <div>
                   <h3
                     v-if="tab.name === 'Health Insurance'"
                     style="text-align:center; margin-top: 30px; margin-left:30px; margin-right:30px"
@@ -149,8 +158,8 @@ export default {
   },
   methods: {
     getQuotes() {
-      console.log(this.$router, "router name")
-      this.$router.push({ path: '/search/health' });
+      console.log(this.$router, "router name");
+      this.$router.push({ path: "/search/health" });
     }
   }
 };
