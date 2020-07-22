@@ -1,27 +1,41 @@
 <template>
   <v-container>
-    <v-layout row wrap style="margin-top: 30px">
+    <v-layout row wrap class="mt-5">
       <v-flex xs2>
         <h4>Your Profile</h4>
         <v-card style="margin-top:10px">
-          <ui v-for="profile in my_profile" :key="profile">
-            <div style="margin-left:10px">{{profile.name}} {{profile.value}}</div>
-          </ui>
-        </v-card>
-        <!-- <v-card style="margin-top:10px">
-          <v-list v-for="profile in my_profile" :key="profile">
-            <v-list-item-content style="margin-left:10px">
-              <v-list-item-title>{{profile.name}} {{profile.value}}
-              </v-list-item-title>
-            </v-list-item-content>
+          <v-list dense>
+            <v-list-item-group color="primary">
+              <v-list-item v-for="profile in my_profile" :key="profile.value">
+                <v-list-item-content>
+                  <v-list-item-title v-text="profile.name"></v-list-item-title>
+
+                  <!-- <v-list-item-avatar>{{profile.value}}</v-list-item-avatar> -->
+                </v-list-item-content>
+
+                <v-list-item-icon class="text-right">{{profile.value}}</v-list-item-icon>
+              </v-list-item>
+            </v-list-item-group>
           </v-list>
-        </v-card>-->
-        <h4 style="margin-top:20px; margin-bottom:10px">Your Preferences</h4>
+        </v-card>
+
+        <h4 class="my-3">Your Preferences</h4>
         <v-card>
-          <h5 style="margin-left:10px">Plan Benefits</h5>
-          <ui v-for="preference in preferences" :key="preference">
+          <!-- <h5 style="margin-left:10px">Plan Benefits</h5> -->
+          <v-subheader>Plan Benefits</v-subheader>
+          <!-- <ui v-for="preference in preferences" :key="preference">
             <div style="margin-left:10px">{{preference.name}}</div>
-          </ui>
+          </ui>-->
+
+          <v-list dense>
+            <v-list-item-group color="primary">
+              <v-list-item v-for="preference in preferences" :key="preference.name">
+                <v-list-item-content>
+                  <v-list-item-title v-text="preference.name"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
         </v-card>
       </v-flex>
       <v-flex xs10>
