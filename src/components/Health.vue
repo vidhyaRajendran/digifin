@@ -25,50 +25,74 @@
         </v-card>
       </v-flex>
       <v-flex xs10>
-        <div v-for="list in plan_list" :key="list">
-          <v-card style="margin-left: 30px; height: 200px">
-            <v-checkbox
-              style="margin-left:10px"
-              v-model="list.checkboxValue"
-              :label="list.plan_name"
-            ></v-checkbox>
-            <v-container fluid>
-              <v-data-iterator :items="list" hide-default-footer>
-                <template v-slot:default="props">
+        <v-row>
+          <v-col v-for="list in plan_list" :key="list" cols="12">
+            <v-card style="margin-left: 30px; height: 150px">
+              <v-row>
+                <v-col cols="2" style="border-right: 1px solid lightgrey;margin-bottom: -100px;">
                   <v-row>
-                    <v-col v-for="item in props" :key="item" cols="12" sm="6" md="4" lg="3">
-                      <v-card>
-                        <v-card-title class="subheading font-weight-bold">Top 4 Benefits</v-card-title>
-
-                        <v-divider></v-divider>
-
-                        <v-list dense>
-                          <v-list-item>
-                            <v-list-item-content>1. Room Rent</v-list-item-content>
-                            <v-list-item-content class="align-end">2. No Claim Bonus</v-list-item-content>
-                          </v-list-item>
-
-                          <v-list-item>
-                            <v-list-item-content>3. Co payment</v-list-item-content>
-                            <v-list-item-content class="align-end">4. PEO Waiting Period</v-list-item-content>
-                          </v-list-item>
-                        </v-list>
-                      </v-card>
+                    <v-col cols="12" style="padding: 0px 10px">
+                      <v-checkbox
+                        class="checkbox-lable"
+                        style="margin-left:10px;font-size: 12px;font-weight: bold;"
+                        v-model="list.checkboxValue"
+                        :label="list.plan_name"
+                      ></v-checkbox>
+                    </v-col>
+                    <v-col cols="12" style="padding: 0px 10px;text-align: center;">
+                      <img width="100px" :src="list.plan_image" />
+                    </v-col>
+                    <v-col cols="12" style="padding: 0px 10px">
+                      <span class="hq-policy">Plan Detail</span>
                     </v-col>
                   </v-row>
-                </template>
-              </v-data-iterator>
-            </v-container>
-            <v-btn
-              class="white--text"
-              style="margin-left:750px; background-color:#fc5350; font-color:white"
-            >Buy for Rs.{{list.price}}</v-btn>
-            <br />
-            <span style="margin-left:800px; font-size:10px">only Rs.{{list.per_day_price}}/ day</span>
-            <span style="margin-left:360px;" class="hq-policy">Policy Boucher</span>
-            <span style="margin-left: -430px;" class="hq-policy">Plan Detail</span>
-          </v-card>
-        </div>
+                  <!-- <v-card>
+                      <v-card-title class="subheading font-weight-bold">Top 4 Benefits</v-card-title>
+
+                      <v-divider></v-divider>
+
+                      <v-list dense>
+                        <v-list-item>
+                          <v-list-item-content>1. Room Rent</v-list-item-content>
+                          <v-list-item-content class="align-end">2. No Claim Bonus</v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+                          <v-list-item-content>3. Co payment</v-list-item-content>
+                          <v-list-item-content class="align-end">4. PEO Waiting Period</v-list-item-content>
+                        </v-list-item>
+                      </v-list>
+                  </v-card>-->
+                </v-col>
+                <v-col cols="2" class="score-policy">Score - {{list.score}}/100</v-col>
+                <v-col cols="6">
+                  <v-card-title class="tableBenefits" style="font-size:15px">Top 4 Benefits</v-card-title>
+                  <v-card-title class="cardValues">
+                    1.Room Rent
+                    <v-spacer />2.No Claim Bonus
+                  </v-card-title>
+                  <v-card-title>
+                    3.Co Payment
+                    <v-spacer />4.S I Restoration
+                  </v-card-title>
+                  <v-card-title class="hq-policy">Score Details</v-card-title>
+                </v-col>
+                <v-col cols="2">
+                  <div class="white--text" style=" background-color:#fc5350; font-color:white">
+                    <a>
+                      Buy for
+                      <br />
+                      Rs.{{list.price}}
+                    </a>
+                  </div>
+                  <br />
+                  <span style="font-size:10px">only Rs.{{list.per_day_price}}/ day</span>
+                  <span class="hq-policy">Policy Boucher</span>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-flex>
     </v-layout>
   </v-container>
@@ -100,5 +124,74 @@ export default {
   text-align: center;
   font-style: normal;
   font-weight: 600;
+}
+.score-policy{
+  font-size: 12px;
+  color: #f98027;
+  text-decoration: underline;
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.hide-show-wrap {
+  width: 115px;
+  height: 40px;
+  background: #232121;
+  position: absolute;
+  top: -40px;
+  right: 10px;
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+.v-input--selection-controls .v-input__slot > .v-label,
+.v-input--selection-controls .v-radio > .v-label {
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+.v-card__title {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: 0.0125em;
+  line-height: 2rem;
+  word-break: break-all;
+  border: 1px solid lightgray;
+  text-align: center;
+  padding: 2px 3px;
+}
+
+.tableBenefits {
+  text-align: center;
+  justify-content: center;
+  color: green;
+  position: relative;
+  top: -12px;
+  border-top: none;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: 0.0125em;
+  line-height: 2rem;
+  word-break: break-all;
+  padding: 0;
+}
+
+.cardValues{
+  position: relative;
+  top: -12px;
+  border-top: none;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  letter-spacing: 0.0125em;
+  line-height: 2rem;
+  word-break: break-all;
+  padding: 0;
 }
 </style>

@@ -3,7 +3,7 @@
         {
             "plan_name": "Health Companion",
             "checkboxValue": "false",
-            "plan_image": "1.png",
+            "plan_image": "https://www.comparepolicy.com/properties/company/20190531_171103_YHgCR_max-bupa.jpg",
             "score": 86.9,
             "price": "7138",
             "per_day_price": "19.56",
@@ -53,7 +53,7 @@
         {
             "plan_name": "Complete Health Care Insurance",
             "checkboxValue": "false",
-            "plan_image": "2.png",
+            "plan_image": "https://www.comparepolicy.com/properties/company/20150831_072642_UXQVL_Universal-Sompo-General.jpg",
             "score": 86.6,
             "price": "6393",
             "per_day_price": "17.52",
@@ -103,7 +103,7 @@
         {
             "plan_name": "Care Plus No Claim Bonus Super",
             "checkboxValue": "false",
-            "plan_image": "3.png",
+            "plan_image": "https://www.comparepolicy.com/properties/company/20150831_073335_yluv3_Religare-Health-Insurance.jpg",
             "score": 82.5,
             "price": "7283",
             "per_day_price": "19.95",
