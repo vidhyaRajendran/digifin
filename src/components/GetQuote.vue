@@ -2,8 +2,8 @@
   <div class="digify-wrap">
     <div>
       <section class="formSection">
-        <h2 style="text-align:center">Compare Best Insurance Policies & Save Money</h2>
-        <v-card style="border-radius: 10px; height: 450px">
+        <h2 class="text-center h2 mb-5">Compare Best Insurance Policies & Save Money</h2>
+        <v-card style="height: 400px">
           <v-tabs fixed-tabs icons-and-text class v-model="currentTabPath">
             <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">
               <div class="d-flex justify-content-center align-items-center flex-column py-3">
@@ -15,6 +15,7 @@
                 </div>
               </div>
             </v-tab>
+            <v-divider></v-divider>
             <v-tabs-items v-model="currentTabPath">
               <v-tab-item lazy v-for="tab in tabs" :key="tab.name">
                 <div>
@@ -76,10 +77,13 @@
 </template>
 
 <script>
+import HealthImage from "../assets/img/health_insurance.png";
+
 export default {
-  name: "HelloWorld",
+  name: "GetQuote",
   data() {
     return {
+      healthImage: HealthImage,
       currentTabPath: "Health Insurance",
       city: [
         "Agra",
@@ -173,33 +177,20 @@ export default {
   min-width: 95px;
   max-width: 95px;
 }
-.digify-wrap {
-  padding: 0;
-  width: 100%;
-  height: 620px;
-  background: #fff;
-  background-position-x: right;
-  background-position-y: center;
-  border-bottom: dashed 1px #cccc;
-}
-.container {
-  margin: 0 auto;
-  max-width: 1280px;
-}
-.formSection {
-  width: 870px;
-  height: 630px;
-  padding: 20px 50px 20px;
-  .form-nav {
-    width: 100%;
-    margin: 25px 0 20px;
-    height: 85px;
-    border-bottom: solid 1px #ccc;
-  }
-}
-.form {
-  width: 590px;
-  height: 340px;
-  margin: 0 auto;
-}
+// .digify-wrap {
+//   padding: 0;
+//   width: 100%;
+//   background: #fff;
+//   background-position-x: right;
+//   background-position-y: center;
+// }
+// .formSection {
+//   padding: 20px 50px 20px;
+//   .form-nav {
+//     width: 100%;
+//     margin: 25px 0 20px;
+//     height: 85px;
+//     border-bottom: solid 1px #ccc;
+//   }
+// }
 </style>
