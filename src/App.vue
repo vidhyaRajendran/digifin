@@ -10,12 +10,15 @@
 <script>
 // import HelloWorld from './components/HelloWorld';
 import Health from "./components/Health.vue";
+
 export default {
   name: "App",
+
   components: {
     // HelloWorld,
     Health
   },
+
   data: () => ({
     //
   })
