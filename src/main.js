@@ -4,8 +4,12 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify';
+import Toasted from 'vue-toasted';
 
 Vue.config.productionTip = false
+
+
+Vue.use(Toasted)
 
 new Vue({
   router,

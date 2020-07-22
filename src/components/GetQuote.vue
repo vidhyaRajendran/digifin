@@ -5,7 +5,12 @@
         <h2 class="text-center h2 mb-5">Compare Best Insurance Policies & Save Money</h2>
         <v-card style="height: 400px">
           <v-tabs fixed-tabs icons-and-text class v-model="currentTabPath">
-            <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">
+            <v-tab
+              class="text-capitalize"
+              v-for="(item, i) in tabs"
+              :disabled="item.name !== 'Health Insurance'"
+              :key="i"
+            >
               <div class="d-flex justify-content-center align-items-center flex-column py-3">
                 <div>
                   <img :src="item.icon" width="20px" height="20px" alt="icon" />
@@ -17,22 +22,42 @@
             </v-tab>
             <v-divider></v-divider>
             <v-tabs-items v-model="currentTabPath">
-              <v-tab-item lazy v-for="tab in tabs" :key="tab.name">
+              <v-tab-item
+                v-for="tab in tabs"
+                :disabled="tab.name !== 'Health Insurance'"
+                :key="tab.name"
+              >
                 <div>
                   <h3
-                    v-if="tab.name === 'Health Insurance'"
+                    :disabled="tab.name !== 'Health Insurance'"
                     style="text-align:center; margin-top: 30px; margin-left:30px; margin-right:30px"
                   >Get Tax Benefits on Health Insurance Plan up to Rs 55K under Section 80 D</h3>
-                  <template v-if="tab.name === 'Health Insurance'">
+                  <v-alert v-if="showToast" type="error">Please Fill the Form Properly</v-alert>
+
+                  <template>
                     <v-container fluid grid-list-md>
-                      <v-form ref="form" v-model="valid" lazy-validation>
+                      <v-form ref="form" v-on:submit.prevent="getQuotes">
                         <v-row>
                           <v-col class="d-flex" cols="12" sm="6">
-                            <v-select :items="city" label="Select City" dense required outlined></v-select>
+                            <v-select
+                              :items="cities"
+                              label="Select City"
+                              dense
+                              required
+                              outlined
+                              v-model="city"
+                            ></v-select>
                           </v-col>
 
                           <v-col class="d-flex" cols="12" sm="6">
-                            <v-select :items="age" label="Select Age" dense required outlined></v-select>
+                            <v-select
+                              v-model="age"
+                              :items="ages"
+                              label="Select Age"
+                              dense
+                              required
+                              outlined
+                            ></v-select>
                           </v-col>
 
                           <v-col class="d-flex" cols="12" sm="6">
@@ -53,17 +78,12 @@
                           <div>
                             <v-btn
                               class="text-capitalize btnStyle"
+                              type="submit"
                               color="primary"
-                              @click="getQuotes()"
                             >Get Quotes</v-btn>
                           </div>
                         </div>
                       </v-form>
-                    </v-container>
-                  </template>
-                  <template v-else>
-                    <v-container>
-                      <span style="text-align: center">Not Found</span>
                     </v-container>
                   </template>
                 </div>
@@ -85,7 +105,8 @@ export default {
     return {
       healthImage: HealthImage,
       currentTabPath: "Health Insurance",
-      city: [
+      showToast: false,
+      cities: [
         "Agra",
         "Ahmed",
         "Alwar",
@@ -105,7 +126,9 @@ export default {
         "Dausa"
       ],
       name: "",
-      age: [
+      age: "",
+      city: "",
+      ages: [
         "18 Years",
         "19 Years",
         "20 Years",
@@ -162,6 +185,11 @@ export default {
   },
   methods: {
     getQuotes() {
+      console.log(this.city, this.age, this.name, this.mobile);
+      if (!(this.city && this.age && this.name && this.mobile)) {
+        this.showToast = true;
+        return;
+      }
       console.log(this.$router, "router name");
       this.$router.push({ path: "/search/health" });
     }
