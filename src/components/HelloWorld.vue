@@ -4,7 +4,7 @@
       <section class="formSection">
         <h2 style="text-align:center">Compare Best Insurance Policies & Save Money</h2>
         <v-card style="border-radius: 10px; height: 450px">
-          <v-tabs class="py-3" v-model="currentTabPath">
+          <v-tabs fixed-tabs icons-and-text class v-model="currentTabPath">
             <v-tab class="text-capitalize" v-for="(item, i) in tabs" :key="i">
               <div class="d-flex justify-content-center align-items-center flex-column py-3">
                 <div>
@@ -47,16 +47,16 @@
                               outlined
                             ></v-text-field>
                           </v-col>
-
-                          <v-col class="d-flex">
+                        </v-row>
+                        <div class="d-flex justify-center align-center">
+                          <div>
                             <v-btn
-                              style="margin-left: 218px;"
                               class="text-capitalize btnStyle"
                               color="primary"
                               @click="getQuotes()"
                             >Get Quotes</v-btn>
-                          </v-col>
-                        </v-row>
+                          </div>
+                        </div>
                       </v-form>
                     </v-container>
                   </template>
@@ -115,13 +115,13 @@ export default {
       tabs: [
         {
           icon:
-            "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
-          name: "Term Insurance"
+            "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
+          name: "Health Insurance"
         },
         {
           icon:
-            "https://www.comparepolicy.com/cp/new-design/images/health-icon.jpg",
-          name: "Health Insurance"
+            "https://www.comparepolicy.com/cp/new-design/images/term-icon.jpg",
+          name: "Term Insurance"
         },
         {
           icon:
@@ -166,6 +166,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+// .v-tabs-bar {
+//   height: 100px;
+// }
+.v-tab {
+  min-width: 95px;
+  max-width: 95px;
+}
 .digify-wrap {
   padding: 0;
   width: 100%;

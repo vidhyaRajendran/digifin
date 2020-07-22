@@ -3,7 +3,9 @@
     <v-toolbar>
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
 
-      <v-toolbar-title>Digifin</v-toolbar-title>
+      <v-toolbar-title>
+        <img :src="digifin" alt="logo" />
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -23,7 +25,14 @@
 </template>
 
 <script>
+import image from "../assets/img/digifin.png";
+
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  data() {
+    return {
+      digifin: image
+    };
+  }
 };
 </script>
