@@ -92,18 +92,77 @@
                   <v-card-title class="hq-policy">Score Details</v-card-title>
                 </v-col>
                 <v-col cols="2">
-                  <div class="white--text" style=" background-color:#fc5350; font-color:white">
-                    <a>
-                      Buy for
-                      <br />
-                      Rs.{{list.price}}
-                    </a>
-                  </div>
+                  <a class="hq-button" @click="dialogVisible = 'true'">
+                    Buy for
+                    <br />
+                    Rs.{{list.price}}
+                  </a>
                   <br />
                   <span style="font-size:10px">only Rs.{{list.per_day_price}}/ day</span>
                   <span class="hq-policy">Policy Boucher</span>
                 </v-col>
               </v-row>
+              <v-dialog v-model="dialogVisible" persistent>
+                <v-card style="background-color: #f0dadb;">
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="2" style="border-right: 1px solid lightgrey;">
+                          <span>Universal</span>
+                          <img width="150px" :src="list.plan_image" />
+                        </v-col>
+                        <v-col cols="10">
+                          <v-row>
+                            <v-col cols="12">
+                              <span>
+                                <b>Your Quote Summary</b>
+                              </span>
+                            </v-col>
+                            <v-col cols="4" sm="6" md="4">
+                              <v-select label="Number of Adults" :items="[1, 2]" required></v-select>
+                            </v-col>
+                            <v-col cols="4" sm="6" md="4">
+                              <v-text-field
+                                label="Number of Children"
+                                :items="[0, 1, 2, 3]"
+                                required
+                              ></v-text-field>
+                            </v-col>
+                            <v-col cols="4" sm="6" md="4">
+                              <v-text-field label="Eldest Member DOB" required></v-text-field>
+                            </v-col>
+                            <v-col cols="4" sm="6" md="4">
+                              <v-text-field
+                                label="Sum Insured"
+                                :items="['1 Lacs', '2 Lacs', '3 Lacs', '4 Lacs', '5 Lacs', '6 Lacs', '7 Lacs', '8 Lacs', '9 Lacs', '10 Lacs']"
+                                required
+                              ></v-text-field>
+                            </v-col>
+                            <v-col cols="4" sm="6" md="4">
+                              <v-text-field
+                                label="Tensure"
+                                :items="['1 Year', '2 Year', '3 Year']"
+                                required
+                              ></v-text-field>
+                            </v-col>
+                            <v-col cols="6">
+                              <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
+                            </v-col>
+                            <v-spacer />
+                            <v-col cols="6">
+                              <v-btn type="primary" @click="dialog = false">Edit Quotes</v-btn>
+                            </v-col>
+                          </v-row>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+                  <!-- <v-card-actions>
+                    <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
+                    <v-btn type="primary" @click="dialog = false">Edit Quotes</v-btn>
+                  </v-card-actions>-->
+                </v-card>
+              </v-dialog>
             </v-card>
           </v-col>
         </v-row>
@@ -120,10 +179,14 @@ export default {
   name: "Health",
   data() {
     return {
+      dialogVisible: "false",
       my_profile: profile.data,
       preferences: preferences.data,
       plan_list: plan_list.data
     };
+  },
+  methods: {
+    buyQuote() {}
   }
 };
 </script>
@@ -139,7 +202,7 @@ export default {
   font-style: normal;
   font-weight: 600;
 }
-.score-policy{
+.score-policy {
   font-size: 12px;
   color: #f98027;
   text-decoration: underline;
@@ -196,7 +259,7 @@ export default {
   padding: 0;
 }
 
-.cardValues{
+.cardValues {
   position: relative;
   top: -12px;
   border-top: none;
@@ -207,5 +270,15 @@ export default {
   line-height: 2rem;
   word-break: break-all;
   padding: 0;
+}
+
+.hq-button {
+  width: 80%;
+  float: left;
+  padding: 1% 5%;
+  background-color: #fc5350;
+  margin: 0 10%;
+  color: #fff;
+  font-size: 14px;
 }
 </style>
