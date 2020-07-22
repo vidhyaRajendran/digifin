@@ -146,10 +146,10 @@
                       </v-row>
                     </v-container>
                   </v-card-text>
-                  <!-- <v-card-actions>
+                  <v-card-actions>
                     <v-btn @click="dialogVisible = false">Make Payment Rs.{{list.price}}</v-btn>
                     <v-btn type="primary" @click="dialog = false">Edit Quotes</v-btn>
-                  </v-card-actions>-->
+                  </v-card-actions>
                 </v-card>
               </v-dialog>
             </v-card>
